@@ -5,7 +5,7 @@ from .views import( UserProfileViewSet, FollowAPIViewSet, CityAPIView, HashtagVi
                     ReviewViewSet, ReviewLikeViewSet, RegisterView, LoginView, LogoutView)
 
 router = routers.DefaultRouter()
-router.register(r'users', UserProfileViewSet)
+router.register(r'users', UserProfileViewSet, basename='profiles')
 router.register(r'hashtags', HashtagViewSet)
 router.register(r'posts', PostViewSet)
 router.register(r'postcontents', PostContentViewSet)

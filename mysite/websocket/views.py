@@ -48,8 +48,10 @@ class LogoutView(generics.GenericAPIView):
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
 class UserProfileViewSet(viewsets.ModelViewSet):
-    queryset = UserProfile.objects.all()
     serializer_class = UserProfileSerializer
+
+    def get_queryset(self):
+        return UserProfile.objects.filter(id=self.request.user.id)
 
 class FollowAPIViewSet(generics.ListAPIView):
     queryset = Follow.objects.all()
